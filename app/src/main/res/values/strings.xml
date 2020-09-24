@@ -1,3 +1,27 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1:2">
+
+
     <string name="app_name">Just Java</string>
+    <string name="name">NAME</string>
+    <string name="toppings">Topping</string>
+    <string name="whipped_cream">Whipped Cream</string>
+    <string name="chocolate">Chocolate</string>
+    <string name="quantity">Quantity</string>
+    <string name="decreament" translatable="false">-</string>
+    <string name="initial_quantity">2</string>
+    <string name="increament" translatable="false">+</string>
+    <string name="order">Order</string>
+
+    <string name="cannot_have_morethan_100">You cannot have more than 100 coffees</string>
+    <string name="cannot_have_lessthan_1">\"You cannot have less than 1 coffee \"</string>
+    <string name="just_java_order_from">\ Just Java Order From \<xliff:g example="Sia" id="name"></xliff:g></string>
+
+    <string name="order_summary_name">Name: <xliff:g example="Amy" id="name">%s</xliff:g></string>
+    <string name="addwhippedcream">\n addWhippedCream ? <xliff:g example="True" id="whipped_Cream">%s</xliff:g></string>
+    <string name="addchocolate">\n addChocolate ? <xliff:g example="True" id="chocolate">%s</xliff:g></string>
+    <string name="noofcoffees">\n No of Coffees : <xliff:g example="10" id="quantity">%s</xliff:g></string>
+    <string name="totalprice">\n Total Price : <xliff:g example="$20" id="price">%s</xliff:g></string>
+    <string name="thankyou" translatable="false">\n Thank You! \</string>
+
+
 </resources>

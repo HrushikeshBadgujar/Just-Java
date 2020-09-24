@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.NumberFormat;
+
 /**
  * This app displays an order form to order coffee.
  */
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void increament(View view) {
         if (numberOfCoffees == 100) {
-            Toast.makeText(this, "You cannot have more than 100 coffees", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.cannot_have_morethan_100, Toast.LENGTH_SHORT).show();
             return;
         }
         numberOfCoffees = numberOfCoffees + 1;
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void decreament(View view) {
         if (numberOfCoffees == 1) {
-            Toast.makeText(this, "You cannot have less than 1 coffee ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.cannot_have_lessthan_1, Toast.LENGTH_SHORT).show();
             return;
         }
         numberOfCoffees = numberOfCoffees - 1;
@@ -75,32 +77,22 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
         //intent.putExtra(Intent.EXTRA_EMAIL, addresses);
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java Order From " + name);
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.just_java_order_from) + name);
         intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
 
 
-        displayMessage(priceMessage);
-
-
     }
 
-    /**
-     * This method displays the given text on the screen.
-     */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
-    }
 
     /**
      * This method displays the given quantity value on the screen.
      */
     private void display(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + number);
+        quantityTextView.setText(" " + number);
     }
 
     /*
@@ -122,12 +114,12 @@ public class MainActivity extends AppCompatActivity {
     Create Order Summary
         */
     private String createOrderSummary(String name, int price, boolean addWhippedCream, boolean addChocolate) {
-        String priceMessage = "NAME : " + name;
-        priceMessage += "\n addWhippedCream? " + addWhippedCream;
-        priceMessage += "\n addChocolate? " + addChocolate;
-        priceMessage += "\n No of Coffees : " + numberOfCoffees;
-        priceMessage += "\n Total Price : " + price;
-        priceMessage += "\n Thank You! ";
+        String priceMessage = getString(R.string.order_summary_name, name);
+        priceMessage += getString(R.string.addwhippedcream, addWhippedCream);
+        priceMessage += getString(R.string.addchocolate, addChocolate);
+        priceMessage += getString(R.string.noofcoffees, numberOfCoffees);
+        priceMessage += getString(R.string.totalprice, NumberFormat.getCurrencyInstance().format(price));
+        priceMessage += getString(R.string.thankyou);
         return priceMessage;
     }
 }
